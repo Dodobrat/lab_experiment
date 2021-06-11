@@ -114,11 +114,6 @@ const App = () => {
 								<Footer />
 							</Flex.Col>
 						</Flex>
-						{isFetching && (
-							<motion.div className='lab__loader__container py--4'>
-								<Loader />
-							</motion.div>
-						)}
 						<BackToTop />
 					</Container>
 				</main>
