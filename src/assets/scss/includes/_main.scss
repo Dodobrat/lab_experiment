@@ -21,4 +21,8 @@
 	@include scrollbar();
 }
 
+.lab__main__wrapper {
+	min-height: 100vh;
+}
+
 @import "./helpers";

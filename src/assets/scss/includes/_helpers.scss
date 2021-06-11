@@ -26,6 +26,10 @@ $containerConstraints: clamp($smBreakpoint, 100%, $lgBreakpoint);
 	transform: translateY(0.15em);
 }
 
+.w--100 {
+	width: 100%;
+}
+
 @import "./util/grid";
 @import "./util/spacers";
 @import "./util/pigments";

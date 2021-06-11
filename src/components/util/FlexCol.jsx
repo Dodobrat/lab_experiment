@@ -1,8 +1,8 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { addElementAttributes, generateStyleClasses } from "../../helpers/functions";
 import cn from "classnames";
 
-export const FlexCol = (props) => {
+export const FlexCol = forwardRef((props, ref) => {
 	const { className, as = "div", order, col, children, style, ...rest } = props;
 
 	const classDefaults = {
@@ -14,10 +14,14 @@ export const FlexCol = (props) => {
 	const ParsedComponent = addElementAttributes(as, rest);
 
 	return (
-		<ParsedComponent className={cn(classBase, generateStyleClasses(classDefaults), className)} style={{ ...style, order }} {...rest}>
+		<ParsedComponent
+			className={cn(classBase, generateStyleClasses(classDefaults), className)}
+			ref={ref}
+			style={{ ...style, order }}
+			{...rest}>
 			{children}
 		</ParsedComponent>
 	);
-};
+});
 
 FlexCol.displayName = "FlexCol";

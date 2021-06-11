@@ -1,8 +1,8 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import cn from "classnames";
 import { addElementAttributes, generateStyleClasses } from "../../helpers/functions";
 
-const Button = (props) => {
+const Button = forwardRef((props, ref) => {
 	const {
 		className,
 		as = "button",
@@ -34,10 +34,11 @@ const Button = (props) => {
 				},
 				className
 			)}
+			ref={ref}
 			{...rest}>
 			{children}
 		</ParsedComponent>
 	);
-};
+});
 
 export default Button;

@@ -15,22 +15,54 @@ $cardConstraints: clamp(0, 100%);
 	}
 }
 
+@mixin focusVisible($color) {
+	&:focus-visible {
+		box-shadow: 0 0 0 0.125rem $color, 0 0 0 0.5rem rgba($color, 0.2);
+	}
+}
+
+@mixin hoverVisible($color) {
+	&:hover {
+		box-shadow: 0 0 0 0.3125rem rgba($color, 0.25);
+	}
+}
+
 .lab__card {
 	@include card();
 	&__meta {
 		text-align: right;
 	}
 	&__stack {
+		transition: box-shadow $normalTransDuration $normalTransTiming;
+		box-shadow: none;
 		position: relative;
 		border-radius: $mdBorderRadius;
 		.lab__badge {
-			z-index: 2;
 			position: absolute;
 			right: 1rem;
 			top: 0;
-			transform: translateY(-50%);
+		}
+		.lab__card {
+			transition: box-shadow $fastTransDuration $fastTransTiming;
+			&__blank {
+				position: absolute;
+			}
+			&:focus {
+				outline: none;
+			}
+			&--low {
+				cursor: pointer;
+				@include hoverVisible($lowRatingBg);
+				@include focusVisible($lowRatingBg);
+			}
+			&--high {
+				cursor: pointer;
+				@include hoverVisible($highRatingBg);
+				@include focusVisible($highRatingBg);
+			}
 		}
 		&--active {
+			transition: box-shadow $normalTransDuration $normalTransTiming;
 			box-shadow: 0 0 0 0.3125rem $bg, 0 0 0 0.3875rem rgba($contrastFont, 0.2);
 		}
 	}

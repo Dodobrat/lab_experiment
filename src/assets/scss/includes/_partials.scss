@@ -17,7 +17,7 @@
 }
 
 //LOADER
-@mixin loader($borderColor: $highRatingColor) {
+@mixin loader($borderColor: $contrastFont) {
 	width: $mdFont * 2;
 	height: $mdFont * 2;
 	border-radius: $roundBorderRadius;

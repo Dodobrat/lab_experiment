@@ -1,9 +1,9 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import cn from "classnames";
 import { addElementAttributes, generateSpacingClasses, generateStyleClasses } from "../../helpers/functions";
 import { FlexCol } from "./FlexCol";
 
-const Flex = (props) => {
+const Flex = forwardRef((props, ref) => {
 	const {
 		children,
 		className,
@@ -39,11 +39,12 @@ const Flex = (props) => {
 				generateStyleClasses(classDefaults),
 				className
 			)}
+			ref={ref}
 			{...rest}>
 			{children}
 		</ParsedComponent>
 	);
-};
+});
 
 Flex.Col = FlexCol;
 
