@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { IconMoon, IconSun } from "../../assets/icons";
 import { useDarkMode } from "../../hooks/useDarkMode";
 import Heading from "../typography/Heading";
@@ -7,7 +7,8 @@ import Button from "./Button";
 
 const Header = () => {
 	const [isDark, setIsDark] = useDarkMode();
-	const toggleDarkMode = () => setIsDark((prev) => !prev);
+
+	const toggleDarkMode = useCallback(() => setIsDark((prev) => !prev), [setIsDark]);
 
 	return (
 		<>
@@ -18,7 +19,7 @@ const Header = () => {
 					</Heading>
 				</Flex.Col>
 				<Flex.Col col='auto'>
-					<Button flavor='round' className='lab__theme-toggle' onClick={toggleDarkMode}>
+					<Button flavor='round' className='lab__contrast-btn' onClick={toggleDarkMode}>
 						{isDark ? <IconSun className='lab__icon' /> : <IconMoon className='lab__icon' />}
 					</Button>
 				</Flex.Col>

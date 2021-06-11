@@ -1,0 +1,37 @@
+$cardConstraints: clamp(0, 100%);
+
+@mixin card() {
+	position: relative;
+	background-clip: border-box;
+	width: $cardConstraints;
+	background: $bgCard;
+	border-radius: $mdBorderRadius;
+	box-shadow: map-get($elevations, "light");
+
+	@supports not (width: $cardConstraints) {
+		min-width: 0;
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.lab__card {
+	@include card();
+	&__meta {
+		text-align: right;
+	}
+	&__stack {
+		position: relative;
+		border-radius: $mdBorderRadius;
+		.lab__badge {
+			z-index: 2;
+			position: absolute;
+			right: 1rem;
+			top: 0;
+			transform: translateY(-50%);
+		}
+		&--active {
+			box-shadow: 0 0 0 0.3125rem $bg, 0 0 0 0.3875rem rgba($contrastFont, 0.2);
+		}
+	}
+}

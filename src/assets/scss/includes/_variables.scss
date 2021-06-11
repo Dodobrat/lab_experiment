@@ -1,3 +1,22 @@
+//Functions
+@function textContrast($bg) {
+	$color-brightness: round((red($bg) * 299) + (green($bg) * 587) + (blue($bg) * 114) / 1000);
+	$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
+
+	@if abs($color-brightness) < ($light-color/2) {
+		@return white;
+	} @else {
+		@return black;
+	}
+}
+
+@function map-deep-get($map, $keys...) {
+	@each $key in $keys {
+		$map: map-get($map, $key);
+	}
+	@return $map;
+}
+
 //Backgrounds
 $bg: #f2f2f2 !default;
 $bgCard: #fff !default;
@@ -209,22 +228,3 @@ $elevations: (
 		0 1rem 3rem rgba(0, 0, 0, 0.175),
 	),
 ) !default;
-
-//Functions
-@function textContrast($bg) {
-	$color-brightness: round((red($bg) * 299) + (green($bg) * 587) + (blue($bg) * 114) / 1000);
-	$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
-
-	@if abs($color-brightness) < ($light-color/2) {
-		@return white;
-	} @else {
-		@return black;
-	}
-}
-
-@function map-deep-get($map, $keys...) {
-	@each $key in $keys {
-		$map: map-get($map, $key);
-	}
-	@return $map;
-}

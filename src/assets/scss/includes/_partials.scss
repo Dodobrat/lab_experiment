@@ -1,3 +1,4 @@
+//TYPOGRAPHY
 .lab__heading {
 	font-size: clamp(1rem, 2vw, 1.5rem);
 	line-height: 1.2;
@@ -11,6 +12,40 @@
 }
 
 .lab__text {
-	font-size: clamp(0.9rem, 2.75vw, 1rem);
+	font-size: clamp(0.9rem, 2vw, 1rem);
 	line-height: 1.4;
+}
+
+//LOADER
+@mixin loader($borderColor: $highRatingColor) {
+	width: $mdFont * 2;
+	height: $mdFont * 2;
+	border-radius: $roundBorderRadius;
+	background: transparent;
+	border-style: solid;
+	border-color: rgba($borderColor, 0.25);
+	border-width: $smFont / 3;
+	border-top: $smFont / 3 solid $borderColor;
+}
+.lab__loader {
+	will-change: transform;
+	@include loader();
+	animation: spin 1.5s linear infinite;
+	&__container {
+		width: max-content;
+		margin: 0 auto;
+	}
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+//BACK TO TOP
+.lab__top {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
 }

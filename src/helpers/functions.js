@@ -9,10 +9,73 @@ import {
 	SizeOptions,
 } from "./classNameHelpers";
 
+//PARSE THREAD
+export const parseThread = (data) => {
+	let item = {};
+	if (Array.isArray(data)) {
+		item = data[0];
+	} else {
+		item = data;
+	}
+
+	if (item) {
+		return {
+			score: item.score ?? null,
+			subject: item.subject ?? null,
+			question: item.question ?? null,
+			text: item.text ?? null,
+			team: item.team ?? null,
+			created_at: item.created_at ?? null,
+		};
+	}
+	return {};
+};
+
+export const parseExceptFirstThread = (data) => {
+	if (Array.isArray(data) && data.length > 1) {
+		return data.filter((item, idx) => idx !== 0).map((entry) => parseThread(entry));
+	}
+	return [];
+};
+
+//PARSE DATE
+export const attachNumberOrdinal = (number) => {
+	let ordinal = "th";
+	switch (number % 10) {
+		case 1:
+			ordinal = "st";
+			break;
+		case 2:
+			ordinal = "nd";
+			break;
+		case 3:
+			ordinal = "rd";
+			break;
+		default:
+			ordinal = "th";
+			break;
+	}
+	return `${number}${ordinal}`;
+};
+
+export const parseDate = (date) => {
+	const parsedDate = new Date(date?.split(" ")[0]);
+
+	const month = parsedDate.toLocaleString("default", { month: "long" }).substring(0, 3);
+	const dateNumber = attachNumberOrdinal(parsedDate.getDate());
+
+	return `${month} ${dateNumber}`;
+};
+
+//CHECK IF SSR [NOT NECCESSARY HERE but flexible for code re-use]
 export const canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
 
+export const randomId = () => `${Math.random()}_${new Date().getTime()}`;
+
+//WARNING
 export const warn = (prop) => console.warn(`Invalid prop "${prop[0]}" with value ${JSON.stringify(prop[1])} supplied to component.`);
 
+//ELEMENT TYPE ATTRIBUTES APPEND
 export const addElementAttributes = (component, props) => {
 	if (component === "button") {
 		props["role"] = "button";
@@ -36,7 +99,7 @@ export const addElementAttributes = (component, props) => {
 	}
 };
 
-//Util Generators
+//CLASSNAME GENERATION
 export const generateSpacingClasses = (prop, prefix) => {
 	if (prop) {
 		if (typeof prop === "object") {

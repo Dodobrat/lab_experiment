@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./assets/scss/app.scss";
 import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+// import { ReactQueryDevtools } from "react-query/devtools";
 // import reportWebVitals from "./reportWebVitals";
 
 const queryClient = new QueryClient();
@@ -12,7 +12,7 @@ ReactDOM.render(
 	<React.StrictMode>
 		<QueryClientProvider client={queryClient}>
 			<App />
-			<ReactQueryDevtools initialIsOpen={false} />
+			{/* <ReactQueryDevtools initialIsOpen={false} /> */}
 		</QueryClientProvider>
 	</React.StrictMode>,
 	document.getElementById("root")

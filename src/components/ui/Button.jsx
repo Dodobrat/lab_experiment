@@ -10,7 +10,6 @@ const Button = (props) => {
 		sizing = "md",
 		keyboardFocusRing = true,
 		spongy = true,
-		onPointerDown,
 		children,
 		...rest
 	} = props;

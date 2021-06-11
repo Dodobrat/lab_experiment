@@ -5,6 +5,7 @@ $pigmentKeys: map-keys($pigments);
 	$fontColor: map-deep-get($pigments, $key, "fontColor");
 	.bg--#{$name} {
 		background-color: $bgColor !important;
+		color: #{$fontColor} !important;
 	}
 	.bgtext--#{$name} {
 		color: $fontColor !important;

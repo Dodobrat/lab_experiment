@@ -2,8 +2,12 @@
 @import "./variables";
 @import "./mixins";
 @import "./reset";
+
+//Components
 @import "./partials";
 @import "./buttons";
+@import "./badges";
+@import "./cards";
 
 @include scrollbar();
 

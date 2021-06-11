@@ -1,0 +1,22 @@
+@mixin badge() {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	padding: 0.45em 0.75em;
+	margin: 0;
+	font-weight: 600;
+	line-height: 1;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: bottom;
+	outline: none;
+	font-size: 0.75em;
+	border-radius: $roundedBorderRadius;
+	background: $bgCard;
+
+	@include crossBrowser(user-select, none);
+}
+
+.lab__badge {
+	@include badge();
+}

@@ -65,6 +65,10 @@
 		}
 	}
 
+	&.col--auto {
+		flex: 0 0 auto;
+	}
+
 	@each $breakpointName, $breakpointSize in $breakpoints {
 		@for $i from 1 through $gridColumns {
 			&.col--#{$breakpointName}--#{$i} {
@@ -73,10 +77,12 @@
 				}
 			}
 		}
-	}
 
-	&.col--auto {
-		flex: 0 0 auto;
+		&.col--#{$breakpointName}--auto {
+			@media all and (min-width: $breakpointSize) {
+				flex: 0 0 auto;
+			}
+		}
 	}
 }
 

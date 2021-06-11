@@ -6,7 +6,7 @@ const Footer = () => {
 		<>
 			<hr />
 			<footer>
-				<Text className='p--2'>&copy; {new Date().getFullYear()}</Text>
+				<Text className='py--2'>&copy; {new Date().getFullYear()}</Text>
 			</footer>
 		</>
 	);
