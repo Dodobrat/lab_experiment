@@ -1,0 +1,230 @@
+//Backgrounds
+$bg: #f2f2f2 !default;
+$bgCard: #fff !default;
+
+//Text Colors
+$contrastFont: #333 !default;
+$mainFont: #999 !default;
+
+//Accent Colors
+$highRatingColor: #9335ff;
+$lowRatingColor: #e89d40;
+
+$highRatingBg: #27aae1;
+$lowRatingBg: #e89d40;
+
+$pigments: (
+	"contrastColor": (
+		"name": "contrastColor",
+		"bgColor": transparent,
+		"fontColor": $contrastFont,
+	),
+	"highColor": (
+		"name": "highColor",
+		"bgColor": transparent,
+		"fontColor": $highRatingColor,
+	),
+	"lowColor": (
+		"name": "lowColor",
+		"bgColor": transparent,
+		"fontColor": $lowRatingColor,
+	),
+	"highBg": (
+		"name": "highBg",
+		"bgColor": $highRatingBg,
+		"fontColor": textContrast($highRatingBg),
+	),
+	"lowBg": (
+		"name": "lowBg",
+		"bgColor": $lowRatingBg,
+		"fontColor": textContrast($lowRatingBg),
+	),
+) !default;
+
+//Font
+$fontFamily: "Comfortaa", cursive, sans-serif;
+
+//Transitions
+$fastTransDuration: 0.15s !default;
+$fastTransTiming: ease !default;
+$fastTrans: all $fastTransDuration $fastTransTiming !default;
+$normalTransDuration: 0.225s !default;
+$normalTransTiming: ease !default;
+$normalTrans: all $normalTransDuration $normalTransTiming !default;
+$slowTransDuration: 0.375s !default;
+$slowTransTiming: ease !default;
+$slowTrans: all $slowTransDuration $slowTransTiming !default;
+
+//SIZING
+//--Global Font size
+$fontSize: 16px !default;
+
+//--Font sizes
+$xsFont: 0.75rem !default;
+$smFont: 0.875rem !default;
+$mdFont: 1rem !default;
+$lgFont: 1.25rem !default;
+$xlFont: 1.5rem !default;
+
+//--Border-radius sizes
+$flatBorderRadius: 0 !default;
+$xsBorderRadius: 0.15rem !default;
+$smBorderRadius: 0.4375rem !default;
+$mdBorderRadius: 0.65rem !default;
+$lgBorderRadius: 1rem !default;
+$xlBorderRadius: 1.45rem !default;
+$roundedBorderRadius: 1.875rem !default;
+$roundBorderRadius: 50% !default;
+
+//--Headings sizes
+$headingOptions: (
+	"h1": clamp(2.75rem, 6.5vw, 5rem),
+	"h2": clamp(2.5rem, 6vw, 4.5rem),
+	"h3": clamp(2.25rem, 5.5vw, 4rem),
+	"h4": clamp(2rem, 5vw, 3.5rem),
+	"h5": clamp(1.75rem, 4.5vw, 3rem),
+	"h6": clamp(1.5rem, 4vw, 2.5rem),
+) !default;
+
+$flavors: (
+	"default": $smBorderRadius,
+	"rounded": $roundedBorderRadius,
+	"round": $roundBorderRadius,
+) !default;
+
+$sizes: (
+	"sm": $smFont,
+	"md": $mdFont,
+	"lg": $lgFont,
+) !default;
+
+//GRID
+$gridColumns: 12 !default;
+$gridColumnWidth: 100% / $gridColumns !default;
+
+$spacingOptions: (
+	"xs": 0.3125rem,
+	"sm": 0.625rem,
+	"md": 1rem,
+	"lg": 1.625rem,
+	"xl": 2rem,
+) !default;
+
+//SPACING
+//--margin/padding separate properties
+$spacingDir: (
+	"t": top,
+	"r": right,
+	"b": bottom,
+	"l": left,
+) !default;
+
+$spacingAxes: (
+	"x": (
+		"name": "x",
+		"prop1": left,
+		"prop2": right,
+	),
+	"y": (
+		"name": "y",
+		"prop1": top,
+		"prop2": bottom,
+	),
+) !default;
+
+//--margin options
+$marginSpacingSize: (
+	"0": 0,
+	"1": 0.325rem,
+	"2": 0.625rem,
+	"3": 1rem,
+	"4": 1.5rem,
+	"5": 2rem,
+	"auto": auto,
+) !default;
+
+//--padding options
+$paddingSpacingSize: (
+	"0": 0,
+	"1": 0.325rem,
+	"2": 0.625rem,
+	"3": 1rem,
+	"4": 1.5rem,
+	"5": 2rem,
+	"unset": unset,
+) !default;
+
+$breakpoints: (
+	"base": 0,
+	"sm": 320px,
+	"md": 540px,
+	"lg": 768px,
+) !default;
+
+$flexAlignOptions: (
+	"stretch": stretch,
+	"flex-start": flex-start,
+	"flex-end": flex-end,
+	"center": center,
+	"baseline": baseline,
+) !default;
+
+$flexJustifyOptions: (
+	"flex-start": flex-start,
+	"flex-end": flex-end,
+	"center": center,
+	"space-between": space-between,
+	"space-around": space-around,
+	"space-evenly": space-evenly,
+) !default;
+
+$flexDirectionOptions: (
+	"row": row,
+	"row-reverse": row-reverse,
+	"column": column,
+	"column-reverse": column-reverse,
+) !default;
+
+$flexWrapOptions: (
+	"nowrap": nowrap,
+	"wrap": wrap,
+	"wrap-reverse": wrap-reverse,
+) !default;
+
+$elevations: (
+	"none": none,
+	"subtle": (
+		0 0.125rem 0.25rem rgba(0, 0, 0, 0.075),
+	),
+	"light": (
+		0 0.3125rem 0.625rem rgba(0, 0, 0, 0.1125),
+	),
+	"medium": (
+		0 0.5rem 1rem rgba(0, 0, 0, 0.15),
+	),
+	"strong": (
+		0 0.75rem 2rem rgba(0, 0, 0, 0.1625),
+	),
+	"interstellar": (
+		0 1rem 3rem rgba(0, 0, 0, 0.175),
+	),
+) !default;
+
+//Functions
+@function textContrast($bg) {
+	$color-brightness: round((red($bg) * 299) + (green($bg) * 587) + (blue($bg) * 114) / 1000);
+	$light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
+
+	@if abs($color-brightness) < ($light-color/2) {
+		@return white;
+	} @else {
+		@return black;
+	}
+}
+
+@function map-deep-get($map, $keys...) {
+	@each $key in $keys {
+		$map: map-get($map, $key);
+	}
+	@return $map;
+}

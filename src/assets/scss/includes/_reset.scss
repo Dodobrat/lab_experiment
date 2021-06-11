@@ -1,0 +1,60 @@
+html {
+	font-size: $fontSize;
+}
+
+html,
+body,
+#root {
+	position: relative;
+	width: 100%;
+	margin: 0;
+	background-color: $bg;
+	color: $mainFont;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	@include crossBrowser(box-sizing, border-box);
+}
+
+* {
+	font-family: $fontFamily;
+	-webkit-tap-highlight-color: transparent;
+	-moz-tap-highlight-color: transparent;
+	@include crossBrowser(box-sizing, inherit);
+	&::after,
+	&::before {
+		@include crossBrowser(box-sizing, inherit);
+	}
+}
+
+::-moz-focus-inner,
+::-moz-focus-outer {
+	border: none;
+	padding: 0;
+	border-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 1rem 0;
+	font-family: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	color: inherit;
+}
+
+hr {
+	margin: 0.25rem 0;
+	border: 0;
+	height: 0;
+	border-top: 0.0625rem solid rgba($mainFont, 0.2);
+}
+
+button,
+[type="button"] {
+	-webkit-appearance: button;
+}

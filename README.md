@@ -27,6 +27,6 @@ In terminal run command `npx json-server --watch ./src/api/data.json --port 5000
 
 #### 4. Start Project
 
-In terminal run command `npm start`
+In terminal run command `npm start`, which will also generate icons (you have to accept)
 
 #### 5. Enjoy 🙂

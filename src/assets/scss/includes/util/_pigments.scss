@@ -1,0 +1,15 @@
+$pigmentKeys: map-keys($pigments);
+@each $key in $pigmentKeys {
+	$name: map-deep-get($pigments, $key, "name");
+	$bgColor: map-deep-get($pigments, $key, "bgColor");
+	$fontColor: map-deep-get($pigments, $key, "fontColor");
+	.bg--#{$name} {
+		background-color: $bgColor !important;
+	}
+	.bgtext--#{$name} {
+		color: $fontColor !important;
+	}
+	.text--#{$name} {
+		color: $bgColor !important;
+	}
+}

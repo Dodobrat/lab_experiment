@@ -1,0 +1,44 @@
+@mixin size($size) {
+	font-size: $size;
+	&.lab__btn {
+		@each $name, $radius in $flavors {
+			&.flavor--#{$name} {
+				@if ($name == "round") {
+					padding: 0;
+				} @else {
+					padding: $size * 0.4375 $size;
+				}
+			}
+		}
+
+		@each $breakpointName, $breakpointSize in $breakpoints {
+			@each $name, $radius in $flavors {
+				&.flavor--#{$breakpointName}--#{$name} {
+					@media all and (min-width: $breakpointSize) {
+						@if ($name == "round") {
+							padding: 0;
+						} @else {
+							padding: $size * 0.4375 $size;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@each $name, $size in $sizes {
+	.sizing--#{$name} {
+		@include size($size);
+	}
+}
+
+@each $breakpointName, $breakpointSize in $breakpoints {
+	@each $name, $size in $sizes {
+		.sizing--#{$breakpointName}--#{$name} {
+			@media all and (min-width: $breakpointSize) {
+				@include size($size);
+			}
+		}
+	}
+}

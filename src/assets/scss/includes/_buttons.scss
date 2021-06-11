@@ -1,0 +1,47 @@
+@mixin btn() {
+	transition: $fastTrans;
+	@media (prefers-reduced-motion) {
+		transition: none;
+	}
+	display: inline-block;
+	position: relative;
+	margin: 0;
+	padding: calc(1em * 0.4375) 1em;
+	width: auto;
+	font-weight: 400;
+	overflow: hidden;
+	line-height: 1.5;
+	outline: none;
+	text-decoration: none;
+	border: none;
+	vertical-align: middle;
+
+	@include crossBrowser(user-select, none);
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+}
+
+.lab__btn {
+	@include btn();
+
+	&--spongy {
+		@include spongy();
+	}
+
+	&--accessible {
+		&:focus {
+			box-shadow: 0 0 0 0.25rem rgba($contrastFont, 0.5), 0 0 0 0.1rem rgba($contrastFont, 0.25);
+		}
+	}
+}
+
+.lab__theme-toggle {
+	background-color: $mainFont;
+	color: $bg;
+}

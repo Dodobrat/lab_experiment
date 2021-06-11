@@ -1,0 +1,35 @@
+//Backgrounds
+$bg: #2f2f2f;
+$bgCard: #444;
+
+//Text Colors
+$contrastFont: #eee;
+$mainFont: #ccc;
+
+$pigments: (
+	"contrastColor": (
+		"name": "contrastColor",
+		"bgColor": transparent,
+		"fontColor": $contrastFont,
+	),
+	"highColor": (
+		"name": "highColor",
+		"bgColor": transparent,
+		"fontColor": $highRatingColor,
+	),
+	"lowColor": (
+		"name": "lowColor",
+		"bgColor": transparent,
+		"fontColor": $lowRatingColor,
+	),
+	"highBg": (
+		"name": "highBg",
+		"bgColor": $highRatingBg,
+		"fontColor": textContrast($highRatingBg),
+	),
+	"lowBg": (
+		"name": "lowBg",
+		"bgColor": $lowRatingBg,
+		"fontColor": textContrast($lowRatingBg),
+	),
+);

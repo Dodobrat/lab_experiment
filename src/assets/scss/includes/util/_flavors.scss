@@ -1,0 +1,30 @@
+@mixin flavor($name, $radius) {
+	border-radius: $radius;
+	@if ($name == "round") {
+		&.lab__btn {
+			width: calc(calc(1em * 1.375) + 1em);
+			height: calc(calc(1em * 1.375) + 1em);
+		}
+	} @else {
+		&.lab__btn {
+			width: initial;
+			height: initial;
+		}
+	}
+}
+
+@each $name, $radius in $flavors {
+	.flavor--#{$name} {
+		@include flavor($name, $radius);
+	}
+}
+
+@each $breakpointName, $breakpointSize in $breakpoints {
+	@each $name, $radius in $flavors {
+		.flavor--#{$breakpointName}--#{$name} {
+			@media all and (min-width: $breakpointSize) {
+				@include flavor($name, $radius);
+			}
+		}
+	}
+}

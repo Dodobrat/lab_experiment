@@ -1,0 +1,54 @@
+@mixin generateSpacingClasses($classKey, $name, $dir, $rule, $spacingSize) {
+	@each $sizeCode, $size in $spacingSize {
+		$axesKeys: map-keys($spacingAxes);
+		@each $key in $axesKeys {
+			$axisName: map-deep-get($spacingAxes, $key, "name");
+			$prop1: map-deep-get($spacingAxes, $key, "prop1");
+			$prop2: map-deep-get($spacingAxes, $key, "prop2");
+			.#{$classKey}#{$axisName}--#{$sizeCode} {
+				#{$rule}-#{$prop1}: $size !important;
+				#{$rule}-#{$prop2}: $size !important;
+			}
+
+			@each $breakpointName, $breakpointSize in $breakpoints {
+				.#{$classKey}#{$axisName}--#{$breakpointName}--#{$sizeCode} {
+					@media all and (min-width: $breakpointSize) {
+						#{$rule}-#{$prop1}: $size !important;
+						#{$rule}-#{$prop2}: $size !important;
+					}
+				}
+			}
+		}
+	}
+
+	@each $sizeCode, $size in $spacingSize {
+		.#{$classKey}--#{$sizeCode} {
+			#{$rule}: $size !important;
+		}
+		.#{$classKey}#{$name}--#{$sizeCode} {
+			#{$rule}-#{$dir}: $size !important;
+		}
+	}
+
+	@each $breakpointName, $breakpointSize in $breakpoints {
+		@each $sizeCode, $size in $spacingSize {
+			.#{$classKey}--#{$breakpointName}--#{$sizeCode} {
+				@media all and (min-width: $breakpointSize) {
+					#{$rule}: $size !important;
+				}
+			}
+			.#{$classKey}#{$name}--#{$breakpointName}--#{$sizeCode} {
+				@media all and (min-width: $breakpointSize) {
+					#{$rule}-#{$dir}: $size !important;
+				}
+			}
+		}
+	}
+}
+
+@each $name, $dir in $spacingDir {
+	//padding
+	@include generateSpacingClasses("p", $name, $dir, padding, $paddingSpacingSize);
+	//margin
+	@include generateSpacingClasses("m", $name, $dir, margin, $marginSpacingSize);
+}

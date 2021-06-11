@@ -1,0 +1,142 @@
+//FLEX GRID UTIL CLASSES
+@mixin flexGrid() {
+	display: flex;
+
+	@each $name, $option in $spacingOptions {
+		&.dui__flex--sx-#{$name} {
+			&:not(.dui__flex--no-negative) {
+				margin-left: -#{$option};
+				margin-right: -#{$option};
+			}
+			& > .dui__flex__col {
+				padding-left: $option;
+				padding-right: $option;
+			}
+		}
+		&.dui__flex--sy-#{$name} {
+			&:not(.dui__flex--no-negative) {
+				margin-top: -#{$option};
+				margin-bottom: -#{$option};
+			}
+			& > .dui__flex__col {
+				padding-top: $option;
+				padding-bottom: $option;
+			}
+		}
+	}
+
+	@each $breakpointName, $breakpointSize in $breakpoints {
+		@each $name, $option in $spacingOptions {
+			&.dui__flex--sx-#{$breakpointName}-#{$name} {
+				@media all and (min-width: $breakpointSize) {
+					&:not(.dui__flex--no-negative) {
+						margin-left: -#{$option};
+						margin-right: -#{$option};
+					}
+					& > .dui__flex__col {
+						padding-left: $option;
+						padding-right: $option;
+					}
+				}
+			}
+			&.dui__flex--sy-#{$breakpointName}-#{$name} {
+				@media all and (min-width: $breakpointSize) {
+					&:not(.dui__flex--no-negative) {
+						margin-top: -#{$option};
+						margin-bottom: -#{$option};
+					}
+					& > .dui__flex__col {
+						padding-top: $option;
+						padding-bottom: $option;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin flexGridCol() {
+	flex: 1 1 auto;
+	max-width: 100%;
+
+	@for $i from 1 through $gridColumns {
+		&.col--#{$i} {
+			flex: 0 0 $gridColumnWidth * $i;
+		}
+	}
+
+	@each $breakpointName, $breakpointSize in $breakpoints {
+		@for $i from 1 through $gridColumns {
+			&.col--#{$breakpointName}--#{$i} {
+				@media all and (min-width: $breakpointSize) {
+					flex: 0 0 $gridColumnWidth * $i;
+				}
+			}
+		}
+	}
+
+	&.col--auto {
+		flex: 0 0 auto;
+	}
+}
+
+.dui__flex {
+	@include flexGrid();
+
+	&__col {
+		@include flexGridCol();
+	}
+}
+
+//UTIL
+@each $name, $option in $flexAlignOptions {
+	.align--#{$name} {
+		align-items: $option;
+	}
+}
+@each $name, $option in $flexJustifyOptions {
+	.justify--#{$name} {
+		justify-content: $option;
+	}
+}
+@each $name, $option in $flexDirectionOptions {
+	.direction--#{$name} {
+		flex-direction: $option;
+	}
+}
+@each $name, $option in $flexWrapOptions {
+	.wrap--#{$name} {
+		flex-wrap: $option;
+	}
+}
+
+@each $breakpointName, $breakpointSize in $breakpoints {
+	@each $name, $option in $flexAlignOptions {
+		.align--#{$breakpointName}--#{$name} {
+			@media all and (min-width: $breakpointSize) {
+				align-items: $option;
+			}
+		}
+	}
+	@each $name, $option in $flexJustifyOptions {
+		.justify--#{$breakpointName}--#{$name} {
+			@media all and (min-width: $breakpointSize) {
+				justify-content: $option;
+			}
+		}
+	}
+	@each $name, $option in $flexDirectionOptions {
+		.direction--#{$breakpointName}--#{$name} {
+			@media all and (min-width: $breakpointSize) {
+				flex-direction: $option;
+			}
+		}
+	}
+	@each $name, $option in $flexWrapOptions {
+		.wrap--#{$breakpointName}--#{$name} {
+			@media all and (min-width: $breakpointSize) {
+				flex-wrap: $option;
+			}
+		}
+	}
+}

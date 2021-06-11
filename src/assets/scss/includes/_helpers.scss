@@ -1,0 +1,33 @@
+$smBreakpoint: map-get($breakpoints, "sm");
+$lgBreakpoint: map-get($breakpoints, "lg");
+$containerConstraints: clamp($smBreakpoint, 100%, $lgBreakpoint);
+
+.lab__container {
+	margin: 0 auto;
+	width: $containerConstraints;
+
+	@supports not (width: $containerConstraints) {
+		min-width: $smBreakpoint;
+		width: 100%;
+		max-width: $lgBreakpoint;
+	}
+}
+
+[aria-label="lab_icon"] {
+	height: 0.75em;
+	width: 0.75em;
+	transform: translateY(0.025em);
+}
+
+//ICON ADJUSTMENTS
+.lab__icon {
+	height: 1.15em;
+	width: 1.15em;
+	transform: translateY(0.15em);
+}
+
+@import "./util/grid";
+@import "./util/spacers";
+@import "./util/pigments";
+@import "./util/sizes";
+@import "./util/flavors";

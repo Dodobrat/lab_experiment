@@ -1,5 +1,11 @@
-$test: darkgrey;
+//Could be used as variable font and have finer controle over font-weight
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;600;700&display=swap");
 
-body {
-	background: $test;
+html {
+	@import "./includes/_main.scss";
+
+	&[dark-theme="true"] {
+		@import "./includes/theme/_dark.scss";
+		@import "./includes/_main.scss";
+	}
 }

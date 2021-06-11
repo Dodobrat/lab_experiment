@@ -1,0 +1,20 @@
+//Not using @use / @forward due to less code and time needed for implementation + not as familiar yet
+@import "./variables";
+@import "./mixins";
+@import "./reset";
+@import "./partials";
+@import "./buttons";
+
+@include scrollbar();
+
+* {
+	transition: background-color $normalTransDuration $normalTransTiming, color $fastTransDuration $fastTransTiming;
+
+	@media (prefers-reduced-motion) {
+		transition: none;
+	}
+
+	@include scrollbar();
+}
+
+@import "./helpers";
