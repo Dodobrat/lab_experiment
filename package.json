@@ -17,7 +17,7 @@
 		"web-vitals": "^1.1.2"
 	},
 	"scripts": {
-		"start": "npm run mkicons && react-scripts start",
+		"start": "react-scripts start",
 		"mkicons": "npx @svgr/cli -d src/assets/icons src/assets/icons --ref --memo --title-prop --svg-props aria-label=lab_icon --icon --replace-attr-values #000=currentColor",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
